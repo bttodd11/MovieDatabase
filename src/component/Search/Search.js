@@ -2,6 +2,7 @@ import React, {useState } from "react";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Badge } from 'react-bootstrap';
 import './Search.css';
 
 
@@ -10,16 +11,41 @@ import './Search.css';
 
 const Search = () => {
 
-  let [movieTitle, setMovieTitle] = useState("")
+  // Setting our hooks 
+  let [movieTitle, setMovieTitle] = useState(null)
+  let [currentMovieOptions, setCurrentMovieOptions] = useState([]);
+  let [pageNation, setPageNation] = useState(1);
+  let [selectedMovie, setSelectedMovie] = useState([]);
 
+  // Function to fetch the data from our first API call with the selected movie
   let fetchData = (event) => {
-    console.log(event.target.value)
-    setMovieTitle(event.target.value)
-    console.log(movieTitle)
-    // let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=godfather&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ'
+    let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + movieTitle + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
+
+    fetch(nyTimesApi).then(response => response.json())
+      .then(data => {
+        for (var index = 0; index < data.results.length; index++) {
+          if (data.results[index].display_title.replace(/ /g,'') == movieTitle.replace(/ /g,'')) {
+            setSelectedMovie(data.results[index]);
+            console.log(selectedMovie)
+            return;
+          }
+        }
+        setCurrentMovieOptions(data.results)
+      })
   }
+
+  // Function call to change the offset to get the next movie titles
+  let pagenationOffset = () => {
+    let nyTimesOffsetApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + movieTitle + '&offset=' + pageNation + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
+
+    fetch(nyTimesOffsetApi).then(response => response.json())
+      .then(data => setCurrentMovieOptions(data.results)
+      )
+    setPageNation(pageNation + 1)
+  }
+
   let fetchTest = (event) => {
-    console.log(event.target.value)
+    setMovieTitle(event.target.value)
   }
 
 
@@ -28,17 +54,37 @@ const Search = () => {
       <div>
         <Form>
           <Form.Group controlId="formBasicEmail">
-            <FormControl className="searchBar" 
-            value = {movieTitle}
-            onChange = {fetchTest}
-            placeholder = "Enter Movie Title" />
+           {currentMovieOptions.length == 0 ? <FormControl className="searchBar"
+              value={movieTitle}
+              onChange={fetchTest}
+              placeholder="Enter Movie Title" />
+              : null}
+            <div>
+              <Container>
+                <Row>
+                  {currentMovieOptions.map(movies =>
+                    (<Col md="4">
+                      <p className="movieNames">{movies.display_title}</p>
+                    </Col>
+                    ))}
+                </Row>
+                <Row>
+                  <Container>
+                    <Row>
+                {currentMovieOptions.length !== 0 ? <Button onClick={pagenationOffset} className="nextPageButton" size="sm" variant="primary">Next Page</Button> : null }
+                </Row>
+                </Container>
+                  </Row>
+              </Container>
+
+            </div>
             <br />
             <Form.Text className="text-muted">
-              Muted Place Holder
+             Created by :  Brian Todd
           </Form.Text>
           </Form.Group>
         </Form>
-        <Button onClick={fetchData} variant="outline-primary">Search</Button>{' '}
+        {currentMovieOptions.length == 0 ? <Button onClick={fetchData} variant="outline-primary">Search</Button> : null }
       </div>
     )
   

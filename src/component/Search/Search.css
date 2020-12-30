@@ -1,3 +1,16 @@
 .searchBar{
     width: 30%;
 }
+.centerContainer{
+    width: 80%;
+    margin: 0 auto;
+}
+.nextPageButton {
+    margin: 0 auto;
+}
+.movieNames {
+    text-align: center;
+}
+.text-muted {
+    text-align: center;
+}
