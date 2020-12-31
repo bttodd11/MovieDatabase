@@ -1,7 +1,22 @@
-import React    from "react";
-import './Search.css';
+import React, { useState, useEffect } from "react";
+import './MovieInfo.css';
 
-const MovieInfo = () => {
+const MovieInfo = (MovieInfo) => {
+    let [selectedMovie, setSelectedMovie] = useState(1);
+
+
+    console.log(MovieInfo)
+
+  
+
+
+
+    return(
+        <div>
+
+            </div>
+    )
+
 
 }
 
