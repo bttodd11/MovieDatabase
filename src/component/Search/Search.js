@@ -17,6 +17,8 @@ const Search = () => {
   let [currentMovieOptions, setCurrentMovieOptions] = useState([]);
   let [pageNation, setPageNation] = useState(1);
   let [selectedMovie, setSelectedMovie] = useState([]);
+  let omdbApi = 'http://www.omdbapi.com/?apikey=2c533baf&t='; 
+  let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query='
   
 
   
@@ -29,15 +31,14 @@ const Search = () => {
 
   // Function to fetch the data from our first API call with the selected movie
   let fetchData = (event) => {
-    let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + movieTitle + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
-    let omdbApi = 'http://www.omdbapi.com/?apikey=2c533baf&t=' + movieTitle; 
-    let fullMovieData = [];
-
+    let omdbObject = {};
+    let fullMovieData = {}
+    nyTimesApi = nyTimesApi + movieTitle + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
+    omdbApi = omdbApi + movieTitle; 
 
     fetch(omdbApi).then(response => response.json())
       .then(omdbData => {
-          console.log(omdbData)
-        fullMovieData.push(omdbData)
+        omdbObject = omdbData;
       })
 
 
@@ -45,14 +46,25 @@ const Search = () => {
       .then(nyTimesData => {
         for (var index = 0; index < nyTimesData.results.length; index++) {
           if (nyTimesData.results[index].display_title.replace(/ /g, '') == movieTitle.replace(/ /g, '')) {
-            let joinedData = fullMovieData.concat(nyTimesData.results[index]);
-            console.log(joinedData)
-            setSelectedMovie(joinedData)
+           fullMovieData = {...omdbObject,
+            ...nyTimesData.results[index]
+          }
+            setSelectedMovie(fullMovieData)
             return;
           }
         }
         setCurrentMovieOptions(nyTimesData.results)
       })
+  }
+
+  let selectedSearchData = (selectedMovieTitle) =>  {
+    omdbApi = omdbApi + selectedMovieTitle;
+    nyTimesApi = nyTimesApi + selectedMovieTitle + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
+
+
+
+    console.log(omdbApi)
+
   }
 
   // Function call to change the offset to get the next movie titles
@@ -85,7 +97,7 @@ const Search = () => {
                   <Row>
                     {currentMovieOptions.map(movies =>
                       (<Col md="4">
-                        <p className="movieNames">{movies.display_title}</p>
+                  <p className="movieNames" onClick={selectedSearchData(movies.display_title)}>{movies.display_title}</p>
                       </Col>
                       ))}
                   </Row>

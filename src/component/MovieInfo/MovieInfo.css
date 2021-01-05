@@ -1,0 +1,67 @@
+.movieSectionInfo{
+    border: 2px solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+.movieTitle{
+    text-align: center;
+}
+.rating{
+    text-align: center;
+}
+.releaseYear{
+    text-align: center;
+}
+.moviePoster{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    height: 400px;
+}
+.plotInfo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: center;
+}
+.infoSection{
+    height: 250px;
+    width: 50%;
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+}
+.nyTimesSection{
+    height: 250px;
+    width: 50%;
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+}
+.nyTimesSection p {
+    font-size: 10px;
+    margin-top: 5%;
+    text-align: center;
+}
+.nyTimesLogo {
+    width: 90%;
+    height: 15%;
+   display: block;
+   margin: 0 auto;
+}
+.straightLine {
+    width: 100%;
+    height: 10%;
+    line-height: 8%;
+}
+.infoSection h6 {
+    font-size: 16px;
+    text-align: center;
+}
+.infoSection p {
+    font-size: 12px;
+}
