@@ -7,17 +7,22 @@ import './MovieInfo.css';
 const MovieInfo = (MovieInfo) => {
     let [currentMovie, setCurrentMovie] = useState([]);
 
+    let adjustDate = (year) => {
+        console.log("fired")
+    }
 
-
-  
-
-    useEffect(() =>{
-        if(MovieInfo.selected.length != 0){
+    useEffect(() => {
+        if (MovieInfo.selected.length != 0) {
             setCurrentMovie(MovieInfo.selected)
-            console.log(MovieInfo)
-            console.log(currentMovie)
         }
     })
+
+    useEffect(() => {
+        if(MovieInfo.selected.Released){
+            adjustDate(MovieInfo.selected.Released)
+        }
+    })
+
 
     return(
         <div>
@@ -28,7 +33,7 @@ const MovieInfo = (MovieInfo) => {
                     <h6 className="releaseYear"> Release Year - {MovieInfo.selected.Year} </h6>
                     <img src={MovieInfo.selected.Poster} className="moviePoster" />
                     <p className="plotInfo">
-                        Plot: {MovieInfo.selected.Plot}
+                        {MovieInfo.selected.Plot}
                     </p>
 
                     <Container>
