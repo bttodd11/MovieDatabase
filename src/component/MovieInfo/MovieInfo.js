@@ -6,22 +6,37 @@ import './MovieInfo.css';
 
 const MovieInfo = (MovieInfo) => {
     let [currentMovie, setCurrentMovie] = useState([]);
+    let [ratings, setRating] = useState([]);
 
     let adjustDate = (year) => {
-        console.log("fired")
+        let newDate = Date.parse(year);
+        let date = new Date(newDate);
+        var options = {
+            year: 'numeric', month: 'numeric', day: 'numeric',
+        }
+
+         var result = date.toLocaleDateString('en', options); // 10/29/2013
+
+    return result
+       
     }
 
     useEffect(() => {
         if (MovieInfo.selected.length != 0) {
+            setRating(MovieInfo.selected.Ratings)
+            console.log(ratings)
+            // This will only run this function once
+            // will adjust the date format
+            MovieInfo.selected.Released = adjustDate(MovieInfo.selected.Released);
+            
+            // This main reason that I am setting the state here is so that I can
+            // Force a re render
             setCurrentMovie(MovieInfo.selected)
+            console.log(currentMovie)
+            console.log(MovieInfo.selected)
         }
     })
 
-    useEffect(() => {
-        if(MovieInfo.selected.Released){
-            adjustDate(MovieInfo.selected.Released)
-        }
-    })
 
 
     return(
@@ -29,7 +44,8 @@ const MovieInfo = (MovieInfo) => {
             { MovieInfo.selected.length !== 0 ?
                 <div className="movieSectionInfo">
                     <h2 className="movieTitle">{MovieInfo.selected.Title}</h2>
-                    <h6 className="rating">IMDB Rating : {MovieInfo.selected.imdbRating} </h6>
+                    <h6 className="rating">IMDB Rating - {MovieInfo.selected.imdbRating} </h6>
+                    <h6 className="rating">Rating - {MovieInfo.selected.Rated} </h6>
                     <h6 className="releaseYear"> Release Year - {MovieInfo.selected.Year} </h6>
                     <img src={MovieInfo.selected.Poster} className="moviePoster" />
                     <p className="plotInfo">
@@ -42,6 +58,7 @@ const MovieInfo = (MovieInfo) => {
                                 <div className="infoSection">
                                     <h6>Movie Information </h6>
                                      <p>Actors : {MovieInfo.selected.Actors} </p>
+                                     <p>Writer: {MovieInfo.selected.Writer} </p>
                                      <p>Awards : {MovieInfo.selected.Awards} </p>
                                      <p>Movie Length : {MovieInfo.selected.Runtime} </p>
                                      <p>Official Release Date : {MovieInfo.selected.Released} </p>
@@ -60,6 +77,19 @@ const MovieInfo = (MovieInfo) => {
            
                                 </div>
                             </Col>
+                            <Col>
+                                <div className="ratingSection">
+                                <h6>Available Ratings </h6>
+                                {ratings.map(db =>
+                                <div>
+                            <p className="movieDatabase">{db.Source}</p>
+                                <h6 className="movieDatabaseValue">{db.Value}</h6>
+                                </div>
+
+                            )}
+                                    </div>
+                            </Col>
+                           
                         </Row>
                     </Container>
 

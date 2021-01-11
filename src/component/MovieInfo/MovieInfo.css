@@ -29,18 +29,37 @@
     text-align: center;
 }
 .infoSection{
-    height: 250px;
-    width: 50%;
+    height: 350px;
+    width: 70%;
     border: 2px solid black;
     display: block;
     margin: 0 auto;
 }
 .nyTimesSection{
-    height: 250px;
+    height: 350px;
+    width: 70%;
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+}
+.ratingSection{
+    height: 350px;
     width: 50%;
     border: 2px solid black;
     display: block;
     margin: 0 auto;
+}
+.ratingSection h6 {
+    font-size: 16px;
+    text-align: center;
+
+}
+.movieDatabase {
+    font-size: 16px;
+    text-align: center;
+}
+.movieDatabaseValue {
+    font-size: 8px !important;
 }
 .nyTimesSection p {
     font-size: 10px;
