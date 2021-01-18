@@ -20,9 +20,11 @@ const Search = () => {
   let [selectedMovie, setSelectedMovie] = useState([]);
   let [datafailure, setDataFailure] = useState(false);
   let omdbApi = 'http://www.omdbapi.com/?apikey=2c533baf&t=';
-  let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query='
+  let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=';
+  let apiKey = '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ'
   let omdbObject = {};
-  let fullMovieData = {}
+  let nyTimesObject = {};
+  let fullMovieData = {};
 
 
 
@@ -32,99 +34,78 @@ const Search = () => {
     setMovieTitle(event.target.value)
   }
 
-  // Function to fetch the data from our first API call with the selected movie
-  let fetchData = (event) => {
-    nyTimesApi = nyTimesApi + movieTitle + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
-    omdbApi = omdbApi + movieTitle;
-    movieTitle = movieTitle.replace(/\s/g, '').toLowerCase()
+  let getOmdbObject = (movieTitle) => {
+    return new Promise((resolve, reject) => {
+      omdbApi = omdbApi + movieTitle;
+      resolve(fetch(omdbApi).then(response => response.json())
+        .then(omdbData => {
+          return omdbData;
+        }))
 
-    fetch(omdbApi).then(response => response.json())
-      .then(omdbData => {
-        omdbObject = omdbData;
-      })
-      .catch(error => {
-        console.log("OMDB API has failed to retrieve data", error)
-        setDataFailure(true)
-        return
-      })
-
-
-    fetch(nyTimesApi).then(response => response.json())
-      .then(nyTimesData => {
-        for (var index = 0; index < nyTimesData.results.length; index++) {
-          let title = nyTimesData.results[index].display_title.replace(/\s/g, '').toLowerCase()
-
-          if (title == movieTitle) {
-            fullMovieData = {
-              ...omdbObject,
-              ...nyTimesData.results[index]
-            }
-            setSelectedMovie(fullMovieData)
-            return;
-          }
-        }
-        setCurrentMovieOptions(nyTimesData.results)
-      })
-      .catch(error => {
-        console.log("New York Time API has failed to retrive data", error)
-        setDataFailure(true);
-        return
-      
-  })}
-
-  // This is ran when the movie is clicked, it will take the movie title
-  // and run it directly through the API
-  let selectedSearchData = (selectedMovieTitle) => {
-    omdbApi = omdbApi + selectedMovieTitle;
-    nyTimesApi =
-      nyTimesApi +
-      selectedMovieTitle +
-      "&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ";
-
-    fetch(omdbApi)
-      .then((response) => response.json())
-      .then((omdbData) => {
-        omdbObject = omdbData;
-      })
-      .catch(error => {
-        console.log("OMDB API has failed to retrieve data", error)
-        setDataFailure(true)
-      })
-
-    fetch(nyTimesApi)
-      .then((response) => response.json())
-      .then((nyTimesData) => {
-        for (var index = 0; index < nyTimesData.results.length; index++) {
-          if (nyTimesData.results[index].display_title == selectedMovieTitle) {
-            fullMovieData = { ...omdbObject, ...nyTimesData.results[index] };
-            setSelectedMovie(fullMovieData);
-            return;
-          }
-        }
-      })
-      .catch(error => {
-        console.log("New York Time API has failed to retrive data", error)
-        setDataFailure(true);
-        return;
-  })}
-
-  // Function call to change the offset to get the next movie titles
-  let pagenationOffset = () => {
-    let nyTimesOffsetApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + movieTitle + '&offset=' + pageNation + '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ';
-
-    fetch(nyTimesOffsetApi).then(response => response.json())
-      .then(data => setCurrentMovieOptions(data.results)
-      )
-    // Changing the offset of the search results
-    setPageNation(pageNation + 1)
+    })
   }
+
+  let getNyTimesObject = (movieTitle, offset) => {
+    return new Promise((resolve, reject) => {
+      // If an offset is present we will need to change the API
+      if (offset) {
+        nyTimesApi = nyTimesApi + movieTitle + '&offset=' + offset + apiKey;
+      }
+      else {
+        nyTimesApi = nyTimesApi + movieTitle + apiKey;
+      }
+
+      // Fetch call for NY Times API
+      resolve(fetch(nyTimesApi).then(response => response.json())
+        .then(nyTimesData => {
+          return nyTimesData.results;
+        })
+      )
+    })
+  }
+
+
+  // Function to fetch the data from our first API call with the selected movie
+  let fetchData = (movieTitle) => {
+    return Promise.all([getNyTimesObject(movieTitle), getOmdbObject(movieTitle)]).then((movies => {
+
+      for (var index = 0; index < movies[0].length; index++) {
+         // Setting movie title
+        movieTitle = movieTitle.replace(/\s/g, '').toLowerCase();
+        let currentMovieTitle = movies[0][index].display_title.replace(/\s/g, '').toLowerCase();
+        
+        if (currentMovieTitle == movieTitle) {
+          fullMovieData = {
+            ...movies[1],
+            ...movies[0][index]
+          }
+
+          setSelectedMovie(fullMovieData)
+          return;
+        }
+      }
+      setCurrentMovieOptions(movies[0])
+        // Changing the offset of the search results
+      setPageNation(pageNation + 1)
+
+    }))
+  }
+  
+ 
+  // Function call to change the offset to get the next movie titles
+  let pageNationOffset = (movieTitle) => {
+   return Promise.all([getNyTimesObject(movieTitle, pageNation)]).then((movieOptions => {
+      setCurrentMovieOptions(movieOptions[0])
+      setPageNation(pageNation + 1)
+   }))}
+
 
 
 
 
   return (
     <div id="searchSection">
-      { selectedMovie.length == 0 ?
+      { selectedMovie.length == 0 && datafailure == false ?
         <div>
           <Form>
             <Form.Group controlId="formBasicEmail">
@@ -138,14 +119,14 @@ const Search = () => {
                   <Row>
                     {currentMovieOptions.map(movies =>
                       (<Col md="4">
-                        <span onClick={() => { selectedSearchData(movies.display_title) }}><p className="movieNames">{movies.display_title}</p></span>
+                        <span onClick={() => {fetchData(movies.display_title)}}><p className="movieNames">{movies.display_title}</p></span>
                       </Col>
                       ))}
                   </Row>
                   <Row>
                     <Container>
                       <Row>
-                        {currentMovieOptions.length !== 0 ? <Button onClick={pagenationOffset} className="nextPageButton" size="sm" variant="primary">Next Page</Button> : null}
+                        {currentMovieOptions.length !== 0 ? <Button onClick={() => pageNationOffset(movieTitle)} className="nextPageButton" size="sm" variant="primary">Next Page</Button> : null}
                       </Row>
                     </Container>
                   </Row>
@@ -157,7 +138,7 @@ const Search = () => {
           </Form.Text>
             </Form.Group>
           </Form>
-          {currentMovieOptions.length == 0 ? <Button onClick={fetchData} variant="outline-primary">Search</Button> : null}
+          {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} variant="outline-primary">Search</Button> : null}
         </div>
         : null}
         { datafailure == false ? 
