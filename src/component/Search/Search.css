@@ -17,3 +17,19 @@ padding-top: 10%;
 .text-muted {
     text-align: center;
 }
+.databaseLogo {
+display: none;
+}
+
+@media (min-width: 320px) and (max-width: 440px) { 
+
+.searchBar{
+    margin-top: 10%;
+}
+.databaseLogo {
+    border: none;
+    display: block;
+    margin: 0 auto;
+}
+
+}

@@ -4,6 +4,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col, Badge } from 'react-bootstrap';
 import MovieInfo from '../MovieInfo/MovieInfo';
+import databaseLogo from '../Search/img/databaseLogo.png';
 import Error from '../Error/Error';
 import './Search.css';
 
@@ -22,8 +23,6 @@ const Search = () => {
   let omdbApi = 'http://www.omdbapi.com/?apikey=2c533baf&t=';
   let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=';
   let apiKey = '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ'
-  let omdbObject = {};
-  let nyTimesObject = {};
   let fullMovieData = {};
 
 
@@ -34,6 +33,7 @@ const Search = () => {
     setMovieTitle(event.target.value)
   }
 
+  // Fetch call for OMDB Database
   let getOmdbObject = (movieTitle) => {
     return new Promise((resolve, reject) => {
       omdbApi = omdbApi + movieTitle;
@@ -45,6 +45,7 @@ const Search = () => {
     })
   }
 
+  // Fetch call for NY Times Database
   let getNyTimesObject = (movieTitle, offset) => {
     return new Promise((resolve, reject) => {
       // If an offset is present we will need to change the API
@@ -65,7 +66,7 @@ const Search = () => {
   }
 
 
-  // Function to fetch the data from our first API call with the selected movie
+  // Fetch the data from our first API call with the selected movie
   let fetchData = (movieTitle) => {
     return Promise.all([getNyTimesObject(movieTitle), getOmdbObject(movieTitle)]).then((movies => {
 
@@ -92,7 +93,7 @@ const Search = () => {
   }
   
  
-  // Function call to change the offset to get the next movie titles
+  // Fetch call to change the offset to get the next movie titles
   let pageNationOffset = (movieTitle) => {
    return Promise.all([getNyTimesObject(movieTitle, pageNation)]).then((movieOptions => {
       setCurrentMovieOptions(movieOptions[0])
@@ -107,6 +108,11 @@ const Search = () => {
     <div id="searchSection">
       { selectedMovie.length == 0 && datafailure == false ?
         <div>
+
+          <div className="imageDiv">
+        <img className="databaseLogo" src={databaseLogo}  />
+        <h6> MD </h6>
+            </div>
           <Form>
             <Form.Group controlId="formBasicEmail">
               {currentMovieOptions.length == 0 ? <FormControl className="searchBar"

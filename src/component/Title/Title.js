@@ -4,7 +4,7 @@ import './Title.css';
 const Title = () => {
     return(
     <div className="navBar">
-      <h2> Movie Database </h2>
+      <h2 className="titleText"> Movie Database </h2>
       </div>
     )
 }

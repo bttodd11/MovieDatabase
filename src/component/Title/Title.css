@@ -1,5 +1,9 @@
-h2{
+.titleText{
     text-align: center;
+    font-family: 'Fontdiner Swanky', cursive;
+    letter-spacing: 10px;
+    display: table-cell;
+    vertical-align: middle;
 }
 .navBar{
     overflow: hidden;
@@ -7,5 +11,19 @@ h2{
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
-    height: 11%;
+    height: 10%;
+    display: table; 
+    
+}
+
+@media (min-width: 320px) and (max-width: 440px) { 
+    .titleText{
+        text-align: center;
+        font-family: 'Fontdiner Swanky', cursive;
+        letter-spacing: 10px;
+        font-size: 20px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
 }
