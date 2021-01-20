@@ -4,7 +4,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col, Badge } from 'react-bootstrap';
 import MovieInfo from '../MovieInfo/MovieInfo';
-import databaseLogo from '../Search/img/databaseLogo.png';
+import MovieLogo from '../Search/img/moviePng.png';
 import Error from '../Error/Error';
 import './Search.css';
 
@@ -110,8 +110,8 @@ const Search = () => {
         <div>
 
           <div className="imageDiv">
-        <img className="databaseLogo" src={databaseLogo}  />
-        <h6> MD </h6>
+        <img className="movieLogo" src={MovieLogo}  />
+
             </div>
           <Form>
             <Form.Group controlId="formBasicEmail">

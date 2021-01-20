@@ -17,8 +17,11 @@ padding-top: 10%;
 .text-muted {
     text-align: center;
 }
-.databaseLogo {
-display: none;
+.movieLogo {
+    height: 400px;
+    width: 400px;
+    display: block;
+    margin: 0 auto;
 }
 
 @media (min-width: 320px) and (max-width: 440px) { 
@@ -30,6 +33,13 @@ display: none;
     border: none;
     display: block;
     margin: 0 auto;
+}
+.movieLogo {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10%;
 }
 
 }
