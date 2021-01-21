@@ -23,8 +23,8 @@
     .titleText{
         text-align: center;
         font-family: 'Fontdiner Swanky', cursive;
-        letter-spacing: 10px;
-        font-size: 28px;
+        letter-spacing: 8px;
+        font-size: 30px;
         display: table-cell;
         vertical-align: middle;
     }
@@ -35,7 +35,7 @@
         position: fixed; /* Set the navbar to fixed position */
         top: 0; /* Position the navbar at the top of the page */
         width: 100%; /* Full width */
-        height: 8%;
+        height: 10%;
         display: table; 
         
     }

@@ -1,6 +1,10 @@
 #searchSection{
 padding-top: 10%;
 }
+.homePageDiv {
+  display: flex;
+  justify-content: center;
+}   
 .searchBar{
     width: 30%;
 }
@@ -18,10 +22,16 @@ padding-top: 10%;
     text-align: center;
 }
 .movieLogo {
-    height: 400px;
-    width: 400px;
+    height: 375px;
+    width: 375px;
     display: block;
     margin: 0 auto;
+}
+.searchButton{
+    margin: 0 auto;
+    width: 25%;
+    display: flex; 
+    justify-content: center;
 }
 
 @media (min-width: 320px) and (max-width: 440px) { 
@@ -29,17 +39,13 @@ padding-top: 10%;
 .searchBar{
     margin-top: 10%;
 }
-.databaseLogo {
-    border: none;
-    display: block;
-    margin: 0 auto;
-}
 .movieLogo {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     display: block;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 35%;
+    margin-bottom: 20%;
 }
 
 }

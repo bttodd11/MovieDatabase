@@ -111,7 +111,6 @@ const Search = () => {
 
           <div className="imageDiv">
         <img className="movieLogo" src={MovieLogo}  />
-
             </div>
           <Form>
             <Form.Group controlId="formBasicEmail">
@@ -144,7 +143,9 @@ const Search = () => {
           </Form.Text>
             </Form.Group>
           </Form>
-          {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} variant="outline-primary">Search</Button> : null}
+          <div class="row justify-content-center">
+          {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} className="searchButton" variant="outline-info">Search</Button> : null}
+          </div>
         </div>
         : null}
         { datafailure == false ? 
