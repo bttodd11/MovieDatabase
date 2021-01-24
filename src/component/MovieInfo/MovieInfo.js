@@ -46,7 +46,7 @@ const MovieInfo = (MovieInfo) => {
         <div className="movieSectionInfo">
           <h2 className="movieTitle">{MovieInfo.selected.Title}</h2>
           <h6 className="rating">
-            IMDB Rating - {MovieInfo.selected.imdbRating}{" "}
+            IMDB Rating - <p className="specialGlow">{MovieInfo.selected.imdbRating} </p>
           </h6>
           <h6 className="rating">Rating - {MovieInfo.selected.Rated} </h6>
           <h6 className="releaseYear">
@@ -78,8 +78,8 @@ const MovieInfo = (MovieInfo) => {
               <Col>
                 <div className="nyTimesSection">
                   <img src={nyTimesLogo} className="nyTimesLogo" />
-                  <a href={MovieInfo.selected.link.url}>
-                    <p>{MovieInfo.selected.link.suggested_link_text}</p>
+                  <a href={MovieInfo.selected.link.url} className="nyTimesLink">
+                    <p className="nyTimesLink">{MovieInfo.selected.link.suggested_link_text}</p>
                   </a>
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
@@ -95,7 +95,7 @@ const MovieInfo = (MovieInfo) => {
                   {ratings.map((db) => (
                     <div>
                       <p className="movieDatabase">{db.Source}</p>
-                      <h6 className="movieDatabaseValue">{db.Value}</h6>
+                      <h6 className="movieDatabaseValue"><p className="specialGlow">{db.Value}</p></h6>
                     </div>
                   ))}
                 </div>

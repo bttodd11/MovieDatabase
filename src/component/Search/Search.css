@@ -26,12 +26,20 @@ padding-top: 10%;
     width: 375px;
     display: block;
     margin: 0 auto;
+    margin-bottom: 5%;
 }
 .searchButton{
     margin: 0 auto;
     width: 25%;
     display: flex; 
     justify-content: center;
+    margin-top: 4%;
+}
+.movieOptionTitle{
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    margin-bottom: 5%;
 }
 
 @media (min-width: 320px) and (max-width: 440px) { 

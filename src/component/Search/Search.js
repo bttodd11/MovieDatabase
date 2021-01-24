@@ -106,12 +106,13 @@ const Search = () => {
 
   return (
     <div id="searchSection">
-      { selectedMovie.length == 0 && datafailure == false ?
+      {selectedMovie.length == 0 && datafailure == false ?
         <div>
-
+          {currentMovieOptions.length == 0 && selectedMovie.length == 0 ? 
           <div className="imageDiv">
         <img className="movieLogo" src={MovieLogo}  />
             </div>
+            : null }
           <Form>
             <Form.Group controlId="formBasicEmail">
               {currentMovieOptions.length == 0 ? <FormControl className="searchBar"
@@ -119,8 +120,11 @@ const Search = () => {
                 onChange={movieTitleInput}
                 placeholder="Enter Movie Title" />
                 : null}
+              {currentMovieOptions.length != 0 ?
               <div>
                 <Container>
+           
+                  <h6 className="movieOptionTitle">Test</h6>
                   <Row>
                     {currentMovieOptions.map(movies =>
                       (<Col md="4">
@@ -132,18 +136,18 @@ const Search = () => {
                     <Container>
                       <Row>
                         {currentMovieOptions.length !== 0 ? <Button onClick={() => pageNationOffset(movieTitle)} className="nextPageButton" size="sm" variant="primary">Next Page</Button> : null}
-                      </Row>
+                      </Row> 
                     </Container>
                   </Row>
                 </Container>
-              </div>
+              </div> : null }
               <br />
               <Form.Text className="text-muted">
                 Created by :  Brian Todd
           </Form.Text>
             </Form.Group>
           </Form>
-          <div class="row justify-content-center">
+          <div className="d-flex justify-content-center">
           {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} className="searchButton" variant="outline-info">Search</Button> : null}
           </div>
         </div>
