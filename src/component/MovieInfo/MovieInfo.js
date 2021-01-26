@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { ExternalLink } from "react-external-link";
-
 import nyTimesLogo from "./img/nyTimesLogo.png";
+import star from "./img/starPng.png";
 import line from "./img/straightLine.png";
 import "./MovieInfo.css";
 
@@ -57,15 +57,15 @@ const MovieInfo = (MovieInfo) => {
           <p className="plotInfo">{MovieInfo.selected.Plot}</p>
 
           <Container>
-            <Row>
-              <Col>
+            <Row> 
+            <Col sm={12} md={12} lg={4}>
                 <div className="infoSection">
                   <h6>Movie Information </h6>
-                  <p>Actors : {MovieInfo.selected.Actors} </p>
-                  <p>Director: {MovieInfo.selected.Director} </p>
-                  <p>Awards : {MovieInfo.selected.Awards} </p>
-                  <p>Movie Length : {MovieInfo.selected.Runtime} </p>
-                  <p>Official Release Date : {MovieInfo.selected.Released} </p>
+                  <p className="infoSectionTitle">Actors  <p>{MovieInfo.selected.Actors} </p></p>
+                  <p className="infoSectionTitle">Director <p> {MovieInfo.selected.Director} </p></p>
+                  <p className="infoSectionTitle">Awards  <p>{MovieInfo.selected.Awards}  </p></p>
+                  <p className="infoSectionTitle">Movie Length  <p>{MovieInfo.selected.Runtime} </p></p>
+                  <p className="infoSectionTitle">Official Release Date  <p>{MovieInfo.selected.Released}</p></p>
                   {MovieInfo.selected.Website != "N/A" ? (
                     <p> Official Website -
                       <ExternalLink href={MovieInfo.selected.Website}>
@@ -75,7 +75,7 @@ const MovieInfo = (MovieInfo) => {
                   ) : null}
                 </div>
               </Col>
-              <Col>
+              <Col sm={12} md={12} lg={4}>
                 <div className="nyTimesSection">
                   <img src={nyTimesLogo} className="nyTimesLogo" />
                   <a href={MovieInfo.selected.link.url} className="nyTimesLink">
@@ -86,18 +86,18 @@ const MovieInfo = (MovieInfo) => {
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
-                  <img src={line} className="straightLine" />
                 </div>
               </Col>
-              <Col>
+              <Col sm={12} md={12} lg={4}>
                 <div className="ratingSection">
                   <h6>Available Ratings </h6>
                   {ratings.map((db) => (
                     <div>
                       <p className="movieDatabase">{db.Source}</p>
                       <h6 className="movieDatabaseValue"><p className="specialGlow">{db.Value}</p></h6>
-                    </div>
+                    </div>    
                   ))}
+                <img src={star} className="starImage" />
                 </div>
               </Col>
             </Row>

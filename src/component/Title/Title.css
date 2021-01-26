@@ -16,6 +16,7 @@
     width: 100%; /* Full width */
     height: 15%;
     display: table; 
+    z-index: 10;
     
 }
 
@@ -37,6 +38,7 @@
         width: 100%; /* Full width */
         height: 10%;
         display: table; 
+        z-index: 10;
         
     }
 
