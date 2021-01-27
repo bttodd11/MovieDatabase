@@ -49,7 +49,8 @@ const MovieInfo = (MovieInfo) => {
             strings: [MovieInfo.selected.Title],
             speed: 100,
             lifeLike: true,
-            cursor: false
+            cursor: false,
+            afterComplete: delete(5)
             
 
           
@@ -82,7 +83,8 @@ const MovieInfo = (MovieInfo) => {
                         {MovieInfo.selected.Website}
                       </ExternalLink>
                     </p>
-                  ) : null}
+                  ) 
+                  : null}
                 </div>
               </Col>
               <Col sm={12} md={12} lg={4}>
