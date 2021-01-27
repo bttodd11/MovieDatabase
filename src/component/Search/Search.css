@@ -6,7 +6,8 @@ padding-top: 10%;
   justify-content: center;
 }   
 .searchBar{
-    width: 30%;
+    width: 60% !important;
+    margin: 0 auto;
 }
 .centerContainer{
     width: 80%;

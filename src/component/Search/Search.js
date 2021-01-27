@@ -114,7 +114,7 @@ const Search = () => {
             </div>
             : null }
           <Form>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               {currentMovieOptions.length == 0 ? <FormControl className="searchBar"
                 value={movieTitle}
                 onChange={movieTitleInput}

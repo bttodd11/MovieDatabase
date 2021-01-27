@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { ExternalLink } from "react-external-link";
+import TypeIt from "typeit-react";
 import nyTimesLogo from "./img/nyTimesLogo.png";
 import star from "./img/starPng.png";
 import line from "./img/straightLine.png";
@@ -44,7 +45,16 @@ const MovieInfo = (MovieInfo) => {
     <div>
       {MovieInfo.selected.length !== 0 ? (
         <div className="movieSectionInfo">
-          <h2 className="movieTitle">{MovieInfo.selected.Title}</h2>
+          <TypeIt options={{
+            strings: [MovieInfo.selected.Title],
+            speed: 100,
+            lifeLike: true,
+            cursor: false
+            
+
+          
+          }}
+            className="movieTitle"></TypeIt>
           <h6 className="rating">
             IMDB Rating - <p className="specialGlow">{MovieInfo.selected.imdbRating} </p>
           </h6>
@@ -61,11 +71,11 @@ const MovieInfo = (MovieInfo) => {
             <Col sm={12} md={12} lg={4}>
                 <div className="infoSection">
                   <h6>Movie Information </h6>
-                  <p className="infoSectionTitle">Actors  <p>{MovieInfo.selected.Actors} </p></p>
-                  <p className="infoSectionTitle">Director <p> {MovieInfo.selected.Director} </p></p>
-                  <p className="infoSectionTitle">Awards  <p>{MovieInfo.selected.Awards}  </p></p>
-                  <p className="infoSectionTitle">Movie Length  <p>{MovieInfo.selected.Runtime} </p></p>
-                  <p className="infoSectionTitle">Official Release Date  <p>{MovieInfo.selected.Released}</p></p>
+                  <p>{MovieInfo.selected.Actors} </p>
+                  <p>Director {MovieInfo.selected.Director} </p>
+                  <p>Awards {MovieInfo.selected.Awards}  </p>
+                  <p>Movie Length {MovieInfo.selected.Runtime} </p>
+                  <p>Official Release Date  {MovieInfo.selected.Released}</p>
                   {MovieInfo.selected.Website != "N/A" ? (
                     <p> Official Website -
                       <ExternalLink href={MovieInfo.selected.Website}>
