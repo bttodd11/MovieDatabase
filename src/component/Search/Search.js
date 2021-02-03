@@ -124,7 +124,7 @@ const Search = () => {
               <div>
                 <Container>
            
-                  <h6 className="movieOptionTitle">Test</h6>
+                  <h6 className="movieOptionTitle">Similar Movie Title Names</h6>
                   <Row>
                     {currentMovieOptions.map(movies =>
                       (<Col md="4">
@@ -166,11 +166,3 @@ const Search = () => {
 
 export default Search;
 
-
-      {/* { datafailure == false ?
-      <div>
-        <MovieInfo selected={selectedMovie} />
-      </div> :
-      <div>
-        <Error />
-        </div>} */}

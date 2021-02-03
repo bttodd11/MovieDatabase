@@ -1,0 +1,27 @@
+.errorMessage{
+    font-size: 90px;
+    font-family: "Kalam", cursive;
+    width: 100%;
+    text-align: center;
+    margin-top: 5%;
+    color: #E2F0E4;
+    text-decoration: underline;
+    -ms-transform: rotate(20deg); /* IE 9 */
+    transform: rotate(20deg);
+}
+.reloadButton {
+    margin: 0 auto;
+    display: flex; 
+    justify-content: center;
+    margin-top: 5%;
+}
+
+
+
+
+
+@media (min-width: 320px) and (max-width: 440px) { 
+    .errorMessage{
+        margin-top: 45%;
+    }
+}
