@@ -6,7 +6,7 @@ padding-top: 10%;
   justify-content: center;
 }   
 .searchBar{
-    width: 30% !important;
+    width: 50% !important;
     margin: 0 auto;
 }
 .centerContainer{
@@ -56,6 +56,7 @@ padding-top: 10%;
 
 .searchBar{
     margin-top: 10%;
+    width: 80% !important;
 }
 .movieLogo {
     height: 300px;
@@ -67,6 +68,13 @@ padding-top: 10%;
 }
 .movieOptionTitle {
     margin-top: 25%;
+}
+.searchButton{
+    margin: 0 auto;
+    width: 40%;
+    display: flex; 
+    justify-content: center;
+    margin-top: 4%;
 }
 
 }

@@ -70,6 +70,11 @@ const Search = () => {
   let fetchData = (movieTitle) => {
     return Promise.all([getNyTimesObject(movieTitle), getOmdbObject(movieTitle)]).then((movies => {
 
+      if(movies[0] == null || movies[1].Response == false){
+        setDataFailure(true);
+        return;
+      }
+
       for (var index = 0; index < movies[0].length; index++) {
          // Setting movie title
         movieTitle = movieTitle.replace(/\s/g, '').toLowerCase();
