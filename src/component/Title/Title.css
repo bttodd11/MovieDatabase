@@ -10,7 +10,7 @@
 .navBar{
     overflow: hidden;
     border-bottom: 7px solid #EBF7ED;
-    background-color: #E2F0E4;
+    background-color: #ebf7ed;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */

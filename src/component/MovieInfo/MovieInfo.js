@@ -53,7 +53,7 @@ const MovieInfo = (MovieInfo) => {
        
           }}
             className="movieTitle"></TypeIt>
-          <h6 className="rating">
+          <h6 className="rating" style={{ marginTop: "5%"}}>
             IMDB Rating - <p className="specialGlow">{MovieInfo.selected.imdbRating} </p>
           </h6>
           <h6 className="rating">Rating - {MovieInfo.selected.Rated} </h6>

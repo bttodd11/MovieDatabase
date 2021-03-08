@@ -4,7 +4,7 @@ padding-top: 10%;
 .homePageDiv {
   display: flex;
   justify-content: center;
-}   
+} 
 .searchBar{
     width: 50% !important;
     margin: 0 auto;
@@ -54,6 +54,9 @@ padding-top: 10%;
 
 @media (min-width: 320px) and (max-width: 440px) { 
 
+#searchSection{
+    padding-top: 1% !important;
+}
 .searchBar{
     margin-top: 10%;
     width: 80% !important;
