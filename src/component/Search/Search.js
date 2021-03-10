@@ -70,15 +70,36 @@ const Search = () => {
   let fetchData = (movieTitle) => {
     return Promise.all([getNyTimesObject(movieTitle), getOmdbObject(movieTitle)]).then((movies => {
 
-      if(movies[0] == null || movies[1].Response == false){
+
+      if(movies[1].Response == "False" && movies[0] == null){
         setDataFailure(true);
         return;
       }
+  
 
+      // If the New York time does not have the data then we will just use the 
+      // OMDB Api for the data since we are using a large portion of the data
+      // on the UI already
+
+      if(!movies[0]){
+  
+        movieTitle = movieTitle.replace(/\s/g, '').toLowerCase();
+        let currentMovieTitle = movies[1].Title.replace(/\s/g, '').toLowerCase();
+
+        if (currentMovieTitle == movieTitle) {
+          fullMovieData = {
+            ...movies[1]
+          }
+
+          setSelectedMovie(fullMovieData)
+          return;
+        }
+      }
+   
       for (var index = 0; index < movies[0].length; index++) {
          // Setting movie title
-        movieTitle = movieTitle.replace(/\s/g, '').toLowerCase();
-        let currentMovieTitle = movies[0][index].display_title.replace(/\s/g, '').toLowerCase();
+         movieTitle = movieTitle.replace(/\s/g, '').toLowerCase();
+         let currentMovieTitle = movies[0][index].display_title.replace(/\s/g, '').toLowerCase();
         
         if (currentMovieTitle == movieTitle) {
           fullMovieData = {
@@ -86,10 +107,12 @@ const Search = () => {
             ...movies[0][index]
           }
 
+          console.log(fullMovieData)
           setSelectedMovie(fullMovieData)
           return;
         }
       }
+
       setCurrentMovieOptions(movies[0])
         // Changing the offset of the search results
       setPageNation(pageNation + 1)
@@ -129,7 +152,7 @@ const Search = () => {
               <div>
                 <Container>
            
-                  <h6 className="movieOptionTitle">Similar Movie Title Names</h6>
+                  <h6 className="movieOptionTitle">Similar Movie Titles</h6>
                   <Row>
                     {currentMovieOptions.map(movies =>
                       (<Col md="4">
@@ -153,7 +176,7 @@ const Search = () => {
             </Form.Group>
           </Form>
           <div className="d-flex justify-content-center">
-          {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} className="searchButton" variant="outline-info">Search</Button> : null}
+          {currentMovieOptions.length == 0 ? <Button onClick={() => fetchData(movieTitle)} className="searchButton" variant="info">Search</Button> : null}
           </div>
         </div>
         : null}

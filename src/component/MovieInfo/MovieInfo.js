@@ -3,7 +3,7 @@ import { Container, Row, Col, Badge } from "react-bootstrap";
 import { ExternalLink } from "react-external-link";
 import TypeIt from "typeit-react";
 import nyTimesLogo from "./img/nyTimesLogo.png";
-import star from "./img/starPng.png";
+import Button from "react-bootstrap/Button";
 import line from "./img/straightLine.png";
 import "./MovieInfo.css";
 
@@ -25,10 +25,14 @@ const MovieInfo = (MovieInfo) => {
     return result;
   };
 
+  const reload = () => {
+    window.location.reload();
+  }
+
   useEffect(() => {
     if (MovieInfo.selected.length != 0) {
       setRating(MovieInfo.selected.Ratings);
-      console.log(ratings);
+      console.log(MovieInfo.selected)
       // This will only run this function once
       // will adjust the date format
       MovieInfo.selected.Released = adjustDate(MovieInfo.selected.Released);
@@ -36,8 +40,6 @@ const MovieInfo = (MovieInfo) => {
       // This main reason that I am setting the state here is so that I can
       // Force a re render
       setCurrentMovie(MovieInfo.selected);
-      console.log(currentMovie);
-      console.log(MovieInfo.selected);
     }
   });
 
@@ -53,7 +55,7 @@ const MovieInfo = (MovieInfo) => {
        
           }}
             className="movieTitle"></TypeIt>
-          <h6 className="rating" style={{ marginTop: "5%"}}>
+          <h6 className="rating" style={{ marginTop: "2%"}}>
             IMDB Rating - <p className="specialGlow">{MovieInfo.selected.imdbRating} </p>
           </h6>
           <h6 className="rating">Rating - {MovieInfo.selected.Rated} </h6>
@@ -69,11 +71,12 @@ const MovieInfo = (MovieInfo) => {
             <Col sm={12} md={12} lg={4}>
                 <div className="infoSection">
                   <h6>Movie Information </h6>
-                  <p>{MovieInfo.selected.Actors} </p>
-                  <p>Director {MovieInfo.selected.Director} </p>
-                  <p>Awards {MovieInfo.selected.Awards}  </p>
-                  <p>Movie Length {MovieInfo.selected.Runtime} </p>
-                  <p>Official Release Date  {MovieInfo.selected.Released}</p>
+                  <p>Actors - <span className="infoSectionText">{MovieInfo.selected.Actors}</span> </p>
+                  <p>Director - <span className="infoSectionText">{MovieInfo.selected.Director}</span> </p>
+                  <p>Writer - <span className="infoSectionText">{MovieInfo.selected.Writer}</span> </p>
+                  <p>Awards - <span className="infoSectionText">{MovieInfo.selected.Awards}</span></p>
+                  <p>Movie Length - <span className="infoSectionText">{MovieInfo.selected.Runtime}</span></p>
+                  <p>Official Release Date - <span className="infoSectionText">{MovieInfo.selected.Released}</span></p>
                   {MovieInfo.selected.Website != "N/A" ? (
                     <p> Official Website -
                       <ExternalLink href={MovieInfo.selected.Website}>
@@ -87,16 +90,25 @@ const MovieInfo = (MovieInfo) => {
               <Col sm={12} md={12} lg={4}>
                 <div className="nyTimesSection">
                   <img src={nyTimesLogo} className="nyTimesLogo" />
-                  <a href={MovieInfo.selected.link.url} className="nyTimesLink">
+                  {MovieInfo.selected.link ? (
+                    <span>
+                 <a href={MovieInfo.selected.link.url} className="nyTimesLink">
                     <p className="nyTimesLink">{MovieInfo.selected.link.suggested_link_text}</p>
                   </a>
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
                   <img src={line} className="straightLine" />
-                  <img src={line} className="straightLine" />
+                  </span>
+                  ) : 
+                  <p className="nyTimesText">The New York Times has not reviewed {MovieInfo.selected.Title} yet. </p> 
+                
+                  }
+           
                 </div>
+  
               </Col>
+
               <Col sm={12} md={12} lg={4}>
                 <div className="ratingSection">
                   <h6>Available Ratings </h6>
@@ -110,9 +122,22 @@ const MovieInfo = (MovieInfo) => {
               </Col>
             </Row>
           </Container>
+          <div className="d-flex justify-content-center">
+          </div>
+          <div>
+      <Button onClick={reload} className="searchButton" variant="info">New Search</Button>
+      </div>
         </div>
-      ) : null}
+        
+        
+      ) 
+      
+      
+      : null}
+
+    
     </div>
+    
   );
 };
 

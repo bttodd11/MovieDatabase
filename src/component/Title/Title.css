@@ -1,44 +1,53 @@
 .titleText{
     text-align: center;
     font-family: 'Fontdiner Swanky', cursive;
-    letter-spacing: 10px;
+    letter-spacing: 5px;
     display: table-cell;
     vertical-align: middle;
     color: #D8D8D8;
-    font-size: 80px;
+    font-size: 30px;
+    text-transform: uppercase;
 }
 .navBar{
     overflow: hidden;
-    border-bottom: 7px solid #EBF7ED;
     background-color: #ebf7ed;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
-    height: 15%;
+    height: 10%;
     display: table; 
     z-index: 10;
-    
+    box-shadow: 0 1px 1px #D8D8D8, 
+    0 2px 2px #D8D8D8, 
+    0 4px 4px #D8D8D8, 
+    0 6px 8px #D8D8D8,
+    0 8px 16px #D8D8D8;
 }
 
 @media (min-width: 320px) and (max-width: 440px) { 
     .titleText{
         text-align: center;
         font-family: 'Fontdiner Swanky', cursive;
-        letter-spacing: 8px;
-        font-size: 30px;
+        font-size: 14px;
         display: table-cell;
         vertical-align: middle;
+        text-transform: uppercase;
     }
     .navBar{
         overflow: hidden;
-        border-bottom: 7px solid #EBF7ED;
         background-color: #E2F0E4;
         position: fixed; /* Set the navbar to fixed position */
         top: 0; /* Position the navbar at the top of the page */
         width: 100%; /* Full width */
-        height: 10%;
+        height: 8%;
         display: table; 
         z-index: 10;
+            
+    box-shadow: 0 1px 1px #D8D8D8, 
+    0 2px 2px #D8D8D8, 
+    0 2px 2px #D8D8D8, 
+    0 3px 5px #D8D8D8,
+    0 4px 8px #D8D8D8;
         
     }
 
