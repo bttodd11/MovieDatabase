@@ -1,29 +1,25 @@
 {
   "files": {
-    "main.css": "/bttodd11/MovieDatabase/static/css/main.3f1aff43.chunk.css",
-    "main.js": "/bttodd11/MovieDatabase/static/js/main.bb4eab8e.chunk.js",
-    "main.js.map": "/bttodd11/MovieDatabase/static/js/main.bb4eab8e.chunk.js.map",
-    "runtime-main.js": "/bttodd11/MovieDatabase/static/js/runtime-main.88673c4e.js",
-    "runtime-main.js.map": "/bttodd11/MovieDatabase/static/js/runtime-main.88673c4e.js.map",
-    "static/css/2.20aa2d7b.chunk.css": "/bttodd11/MovieDatabase/static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.caacacd5.chunk.js": "/bttodd11/MovieDatabase/static/js/2.caacacd5.chunk.js",
-    "static/js/2.caacacd5.chunk.js.map": "/bttodd11/MovieDatabase/static/js/2.caacacd5.chunk.js.map",
-    "static/js/3.8c743914.chunk.js": "/bttodd11/MovieDatabase/static/js/3.8c743914.chunk.js",
-    "static/js/3.8c743914.chunk.js.map": "/bttodd11/MovieDatabase/static/js/3.8c743914.chunk.js.map",
-    "index.html": "/bttodd11/MovieDatabase/index.html",
-    "static/css/2.20aa2d7b.chunk.css.map": "/bttodd11/MovieDatabase/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.3f1aff43.chunk.css.map": "/bttodd11/MovieDatabase/static/css/main.3f1aff43.chunk.css.map",
-    "static/js/2.caacacd5.chunk.js.LICENSE.txt": "/bttodd11/MovieDatabase/static/js/2.caacacd5.chunk.js.LICENSE.txt",
-    "static/media/moviePng.aea75ff3.png": "/bttodd11/MovieDatabase/static/media/moviePng.aea75ff3.png",
-    "static/media/nyTimesLogo.a238ac4b.png": "/bttodd11/MovieDatabase/static/media/nyTimesLogo.a238ac4b.png",
-    "static/media/starPng.3ab43a53.png": "/bttodd11/MovieDatabase/static/media/starPng.3ab43a53.png",
-    "static/media/straightLine.f7ffe2ec.png": "/bttodd11/MovieDatabase/static/media/straightLine.f7ffe2ec.png"
+    "main.css": "/MovieDatabase/static/css/main.eb97763c.chunk.css",
+    "main.js": "/MovieDatabase/static/js/main.9bf02bc2.chunk.js",
+    "main.js.map": "/MovieDatabase/static/js/main.9bf02bc2.chunk.js.map",
+    "runtime-main.js": "/MovieDatabase/static/js/runtime-main.01e0a5f9.js",
+    "runtime-main.js.map": "/MovieDatabase/static/js/runtime-main.01e0a5f9.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/MovieDatabase/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.e10d04ac.chunk.js": "/MovieDatabase/static/js/2.e10d04ac.chunk.js",
+    "static/js/2.e10d04ac.chunk.js.map": "/MovieDatabase/static/js/2.e10d04ac.chunk.js.map",
+    "index.html": "/MovieDatabase/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/MovieDatabase/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.eb97763c.chunk.css.map": "/MovieDatabase/static/css/main.eb97763c.chunk.css.map",
+    "static/js/2.e10d04ac.chunk.js.LICENSE.txt": "/MovieDatabase/static/js/2.e10d04ac.chunk.js.LICENSE.txt",
+    "static/media/nyTimesLogo.a238ac4b.png": "/MovieDatabase/static/media/nyTimesLogo.a238ac4b.png",
+    "static/media/straightLine.f7ffe2ec.png": "/MovieDatabase/static/media/straightLine.f7ffe2ec.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.88673c4e.js",
+    "static/js/runtime-main.01e0a5f9.js",
     "static/css/2.20aa2d7b.chunk.css",
-    "static/js/2.caacacd5.chunk.js",
-    "static/css/main.3f1aff43.chunk.css",
-    "static/js/main.bb4eab8e.chunk.js"
+    "static/js/2.e10d04ac.chunk.js",
+    "static/css/main.eb97763c.chunk.css",
+    "static/js/main.9bf02bc2.chunk.js"
   ]
 }
