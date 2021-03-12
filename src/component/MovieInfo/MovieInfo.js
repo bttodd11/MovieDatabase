@@ -125,7 +125,7 @@ const MovieInfo = (MovieInfo) => {
           <div className="d-flex justify-content-center">
           </div>
           <div>
-      <Button onClick={reload} className="searchButton" variant="info">New Search</Button>
+      <Button onClick={reload} className="searchButton" variant="info">Reload</Button>
       </div>
         </div>
         
