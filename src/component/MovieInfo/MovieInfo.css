@@ -218,21 +218,21 @@ a:visited {
 
   /* InfoSection for mobile */
   .infoSection {
-    width: 90%;
+    width: 72%;
     padding: 3%;
     margin-top: 10%;
     -ms-transform: rotate(25deg); /* IE 9 */
     transform: rotate(25deg); /* Standard syntax */
   }
   .nyTimesSection {
-    width: 90%;
+    width: 72%;
     padding: 3%;
     margin-top: 2%;
     -ms-transform: rotate(-25deg); /* IE 9 */
     transform: rotate(-25deg); /* Standard syntax */
   }
   .ratingSection {
-    width: 90%;
+    width: 72%;
     padding: 3%;
     -ms-transform: rotate(25deg); /* IE 9 */
     transform: rotate(25deg); /* Standard syntax */
