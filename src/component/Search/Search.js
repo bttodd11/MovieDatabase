@@ -20,7 +20,7 @@ const Search = () => {
   let [pageNation, setPageNation] = useState(1);
   let [selectedMovie, setSelectedMovie] = useState([]);
   let [datafailure, setDataFailure] = useState(false);
-  let omdbApi = 'http://www.omdbapi.com/?apikey=2c533baf&t=';
+  let omdbApi = 'https://www.omdbapi.com/?apikey=2c533baf&t=';
   let nyTimesApi = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=';
   let apiKey = '&api-key=vKMNXxALAeCJBsOuNv1USvjhAHkXhIFJ'
   let fullMovieData = {};
