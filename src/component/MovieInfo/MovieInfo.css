@@ -87,6 +87,7 @@
   font-family: "Kalam", cursive;
   padding: 3%;
   text-align: left;
+  border-radius: 5%;
   font-weight: 900;
   border: 1px solid #D8D8D8;
   box-shadow: 25px 25px 10px #D8D8D8
@@ -113,6 +114,7 @@ color: #D8D8D8 !important;
   font-family: "Kalam", cursive;
   border: 1px solid #D8D8D8;
   padding: 3%;
+  border-radius: 5%;
   box-shadow: 15px 15px 5px #D8D8D8
 }
 .ratingSection {
@@ -123,6 +125,7 @@ color: #D8D8D8 !important;
   margin: 0 auto;
   background-color: white;
   padding: 2%;
+  border-radius: 5%;
   color: #D8D8D8 !important;
   box-shadow: 15px 15px 5px #D8D8D8
 }

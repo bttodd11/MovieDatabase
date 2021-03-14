@@ -4,13 +4,13 @@
     letter-spacing: 5px;
     display: table-cell;
     vertical-align: middle;
-    color: #D8D8D8;
+    color: white;
     font-size: 30px;
     text-transform: uppercase;
 }
 .navBar{
     overflow: hidden;
-    background-color: white;
+    background-color: #ebf7ed;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
@@ -35,7 +35,7 @@
     }
     .navBar{
         overflow: hidden;
-        background-color: white;
+        background-color: #ebf7ed;
         position: fixed; /* Set the navbar to fixed position */
         top: 0; /* Position the navbar at the top of the page */
         width: 100%; /* Full width */

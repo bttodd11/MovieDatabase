@@ -1,5 +1,16 @@
+#homePage {
+height: 100%;
+background-color: #ebf7ed;
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 440px) { 
+
 #homePage{
 background-color: #ebf7ed;
-height: 100%;
-width: 100%;
-};
+height: 100vh;
+width: 100vw;
+}
+}
